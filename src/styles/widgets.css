@@ -1,0 +1,526 @@
+
+/* Originally 00-foundation.css; retained specialized styles only. */
+/* Shell */
+/* Dashboard */
+/* Rich content and editor */
+.rich-content { font-size: 15px; line-height: 1.75; color: var(--text); overflow-wrap: anywhere }
+.rich-compact { font-size: 12.5px; line-height: 1.6; max-height: 145px; overflow: hidden }
+.rich-content p, .tiptap-prose p { margin: .3em 0 }
+.rich-content h1, .tiptap-prose h1 { font-size: 1.75em; font-weight: 800; margin: .5em 0 }
+.rich-content h2, .tiptap-prose h2 { font-size: 1.4em; font-weight: 750; margin: .45em 0 }
+.rich-content ul, .tiptap-prose ul { padding-left: 1.5em; list-style-type: disc; margin: .5em 0 }
+.rich-content ol, .tiptap-prose ol { padding-left: 1.5em; list-style-type: decimal; margin: .5em 0 }
+.rich-content blockquote, .tiptap-prose blockquote { border-left: 3px solid var(--accent); padding: 2px 12px; margin: 9px 0; color: var(--muted) }
+.rich-content a, .tiptap-prose a { color: var(--accent); text-decoration: underline }
+.rich-content img, .tiptap-prose img { display: inline-block; vertical-align: middle; max-width: 100%; max-height: 410px; object-fit: contain; height: auto; border-radius: 8px; margin: 7px 0 }
+.rich-content code, .tiptap-prose code { background: var(--surface-3); color: var(--accent); padding: .1em .3em; border-radius: 4px }
+.rich-content pre, .tiptap-prose pre { background: var(--surface-3); overflow: auto; padding: 13px; border-radius: 9px }
+.rich-content pre code, .tiptap-prose pre code { background: transparent; color: inherit }
+.rich-content table, .tiptap-prose table { border-collapse: collapse; width: 100%; table-layout: fixed; margin: 10px 0 }
+.rich-content td, .rich-content th, .tiptap-prose td, .tiptap-prose th { padding: 6px 9px; border: 1px solid var(--border); vertical-align: top; min-width: 42px }
+.rich-content th, .tiptap-prose th { background: var(--surface-3); font-weight: 800 }
+.tiptap-prose .selectedCell { background: var(--accent-soft) }
+.tiptap-prose .column-resize-handle { background: var(--accent); width: 4px; position: absolute; right: -2px; top: 0; bottom: 0; pointer-events: none }
+.tiptap-prose .tableWrapper { overflow-x: auto }
+.tiptap-prose .ProseMirror-gapcursor { display: none }
+.tiptap-prose p.is-editor-empty:first-child::before { color: var(--faint); content: attr(data-placeholder); float: left; height: 0; pointer-events: none }
+
+/* Modal, forms, preferences */
+.modal-body { padding: 24px 27px 25px }
+.field-label { display: flex; flex-direction: column; gap: 9px; color: var(--text); font-size: 12px; font-weight: 750 }
+.field-note { color: var(--muted); font-size: 11px; margin: 11px 0 0 }
+.form-error { background: var(--red-soft); color: var(--red); border-radius: 8px; padding: 9px 12px; margin-top: 13px; font-size: 12px }
+.delete-warning { display: flex; gap: 11px; border: 1px solid var(--border); border-radius: 10px; background: var(--red-soft); color: var(--red); padding: 16px; font-size: 12px }
+.delete-warning > svg { flex: 0 0 20px; margin-top: 2px }
+.delete-warning strong { display: block; font-size: 13px }
+.delete-warning p { margin: 6px 0 0; line-height: 1.7 }
+
+
+/* Originally 10-components.css; retained specialized styles only. */
+
+/* Study */
+.study-page { width: 100%; min-height: 100%; }
+.study-topbar { height: 66px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding: 0 36px }
+.back-button { display: flex; align-items: center; gap: 9px; color: var(--muted); border: none; background: transparent; font-size: 12px; font-weight: 650 }
+.back-button:hover { color: var(--text) }
+.study-deck-title { font-weight: 750; font-size: 13px }
+.study-topbar-count { color: var(--muted); font-size: 12px; font-weight: 700 }
+.study-container { max-width: 840px; margin: 33px auto 0; padding: 0 35px 70px }
+.study-progress { margin-bottom: 28px }
+.study-progress-label { display: flex; justify-content: space-between; color: var(--muted); font-size: 11.5px; font-weight: 650; margin-bottom: 10px }
+.study-progress-label strong { color: var(--accent) }
+.progress-track { height: 7px; background: var(--surface-3); border-radius: 10px; overflow: hidden }
+.study-card { width: 100%; min-height: min(48vh, 410px); padding: 23px 31px 26px; color: var(--text); display: flex; flex-direction: column; align-items: stretch; text-align: left; background: var(--surface); border: 1px solid var(--border); border-radius: 19px; box-shadow: 0 12px 35px #0000000c; cursor: pointer; transition: border-color .2s, transform .2s }
+.study-card:hover { border-color: var(--accent); transform: translateY(-2px) }
+.study-card.is-flipped { border-color: var(--accent) }
+.study-card-eyebrow { display: flex; align-items: center; justify-content: space-between; color: var(--accent); letter-spacing: 1.5px; font-size: 10px; font-weight: 800 }
+.study-card-content { flex: 1; display: flex; justify-content: center; align-items: center; text-align: left; min-height: 220px; padding: 20px 16px; overflow: auto }
+.study-card-content .rich-content { width: 100%; text-align: left; font-size: clamp(18px, 2.3vw, 25px); line-height: 1.6 }
+.study-card-content .rich-content img { max-height: min(32vh, 265px) }
+.study-rating { display: flex; justify-content: center; gap: 13px; margin-top: 24px }
+.rating-wrong { background: var(--red-soft); color: var(--red); border-color: transparent }
+.rating-wrong:hover { border-color: var(--red) }
+.rating-correct { color: var(--green); background: var(--green-soft); border-color: transparent }
+.rating-correct:hover { border-color: var(--green) }
+kbd { display: inline-flex; justify-content: center; align-items: center; padding: 2px 6px; min-width: 19px; border-radius: 4px; border: 1px solid var(--border); color: var(--faint); background: var(--surface-2); font-size: 10px; font-weight: 700 }
+.study-keyboard-hint { text-align: center; color: var(--faint); font-size: 10.5px; margin-top: 20px }
+.study-keyboard-hint span { margin: 0 9px }
+.study-finished { display: flex; flex-direction: column; align-items: center; margin: 90px auto; text-align: center; padding: 0 20px }
+.finished-icon { height: 89px; width: 89px; display: grid; place-items: center; border-radius: 25px; background: var(--accent-soft); color: var(--accent); margin-bottom: 18px }
+.study-finished h1 { font-weight: 800; font-size: 30px; margin: 0 0 9px }
+.study-finished > p { color: var(--muted); font-size: 13px }
+.finish-stats { display: flex; gap: 80px; padding: 32px 0 }
+.finish-stats strong { display: block; font-size: 34px; font-weight: 800 }
+.finish-stats span { font-size: 11px; color: var(--muted) }
+.finish-buttons { display: flex; gap: 10px }
+.save-alert { z-index: 2500; position: fixed; bottom: 22px; left: 300px; display: flex; align-items: center; gap: 13px; padding: 12px 15px; background: var(--red-soft); border: 1px solid var(--red); border-radius: 9px; color: var(--red); max-width: 520px; font-size: 12px }
+.save-alert span { color: var(--text); flex: 1 }
+.spinning { animation: spin 1.1s linear infinite }
+@keyframes spin { to { transform: rotate(360deg) } }
+.bootstrap-screen { height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; gap: 12px; color: var(--muted); padding: 30px }
+.bootstrap-screen > h1 { font-weight: 800; color: var(--text); font-size: 29px; margin: 0 }
+.bootstrap-screen p { font-size: 12px }
+.bootstrap-logo { height: 76px; width: 76px; display: grid; place-items: center; border-radius: 20px; background: var(--accent); color: white; margin-bottom: 10px }
+.bootstrap-error { max-width: 490px; color: var(--red) }
+.bootstrap-actions { display: flex; gap: 10px; justify-content: center; margin-top: 20px }
+
+
+/* Frameless desktop window: only the title strip is draggable. */
+.context-menu-panel { z-index: 8000 }
+.folder-picker-label { margin-top: 17px }
+.folder-picker-label .field-note { display: block; margin: 0; font-weight: 400 }
+
+/* v1.2 · Motion & component polish */
+:root { --motion-out: cubic-bezier(.22, 1, .36, 1); --motion-standard: cubic-bezier(.2,.75,.25,1) }
+@keyframes veil-in { from { opacity: 0 } to { opacity: 1 } }
+@keyframes dialog-in { from { opacity: 0; transform: translateY(12px) scale(.985) } to { opacity: 1; transform: translateY(0) scale(1) } }
+@keyframes rise-in { from { opacity: 0; transform: translateY(9px) } to { opacity: 1; transform: translateY(0) } }
+@keyframes toast-in { from { opacity: 0; transform: translateY(10px) scale(.985) } to { opacity: 1; transform: translateY(0) scale(1) } }
+
+/* Entrance runs on mount; the exit keyframes run before the portal unmounts. */
+.modal-overlay[data-closing='false'] { animation: veil-in .2s ease-out both }
+.modal-panel[data-closing='false'] { animation: dialog-in .24s var(--motion-out) both }
+.modal-overlay[data-closing='true'] { animation: veil-out .19s ease-in both }
+.modal-panel[data-closing='true'] { animation: dialog-out .19s ease-in both }
+.toast-reveal { animation: toast-in .23s var(--motion-out) both }
+@media (prefers-reduced-motion: reduce) { .toast-reveal { animation: none } }
+
+.study-page { animation: rise-in .23s var(--motion-out) both }
+
+/* A little breathing room between levels and siblings, including long folder trees */
+
+/* A real themed select, no Windows native option popups */
+
+/* GoodNotes-inspired saved swatches */
+
+
+/* Table insertion grid; 8×8 with live dimension preview */
+.tiptap-prose .tableWrapper { overflow: auto; padding: 4px 2px 10px; margin: 10px 0 }
+.tiptap-prose .tableWrapper table { width: 100%; min-width: 100%; table-layout: fixed; margin: 0 }
+.tiptap-prose table td, .tiptap-prose table th { min-width: 62px; position: relative; border-color: var(--border); padding: 10px 11px; transition: box-shadow .12s }
+.tiptap-prose table td:hover, .tiptap-prose table th:hover { box-shadow: inset 0 0 0 1px var(--accent) }
+.tiptap-prose .tableWrapper .column-resize-handle { background: var(--accent); opacity: .95; width: 5px; right: -3px; z-index: 3; cursor: col-resize; box-shadow: 0 0 0 2px var(--accent-soft) }
+.tiptap-prose.resize-cursor { cursor: col-resize }
+.tiptap-prose .selectedCell { background: var(--accent-soft) !important }
+.rich-content td[style], .rich-content th[style] { background-clip: padding-box }
+
+/* Image selection, safe delete, aspect-ratio-preserving drag handles */
+.resizable-image-node { display: block; margin: 14px 0; max-width: 100% }
+.resizable-image-frame { display: inline-block; position: relative; max-width: 100%; border: 2px solid transparent; border-radius: 11px; padding: 4px; transition: border-color .18s, background .18s, box-shadow .18s; cursor: default }
+.resizable-image-frame > img { display: block; margin: 0; width: 100%; height: auto; max-height: none; object-fit: contain; border-radius: 7px; user-select: none }
+.resizable-image-node.is-selected .resizable-image-frame, .resizable-image-node:hover .resizable-image-frame { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent) }
+.image-edit-controls { position: absolute; left: 11px; top: 11px; transform: translateY(6px); display: flex; align-items: center; gap: 7px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .16s, transform .16s, visibility .16s; z-index: 5 }
+.resizable-image-node.is-selected .image-edit-controls, .resizable-image-node:hover .image-edit-controls { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) }
+.image-remove { display: grid; place-items: center; background: transparent; color: var(--text); border: 0; border-radius: 6px; min-width: 25px; height: 25px; padding: 0 5px; font-size: 10px; font-weight: 800 }
+.image-remove { background: var(--red-soft); color: var(--red); border: 1px solid var(--red); min-width: 29px; height: 29px }
+.image-remove:hover { background: var(--red); color: var(--surface) }
+.image-resize-handle { position: absolute; width: 17px; height: 17px; bottom: -8px; right: -8px; border: 3px solid var(--surface); background: var(--accent); border-radius: 6px; cursor: nwse-resize; opacity: 0; transition: opacity .16s; touch-action: none; box-shadow: 0 2px 9px #0005 }
+.resizable-image-node.is-selected .image-resize-handle, .resizable-image-node:hover .image-resize-handle { opacity: 1 }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important }
+}
+@keyframes veil-out { to { opacity: 0 } }
+@keyframes dialog-out { to { opacity: 0; transform: translateY(8px) scale(.985) } }
+
+/* With Floating UI layout-based positioning, animation transforms no longer move the anchor. */
+
+
+/* 1.3: Subdued companion icons, clear menu hierarchy */
+
+/* Summary is static data: not a tappable tile */
+
+
+/* Originally 20-views.css; retained specialized styles only. */
+/* ChatGPT integration — self-contained assistant workspace */
+.ai-page { height: 100%; min-height: 0; display: flex; flex-direction: column; padding: 24px 30px 28px; gap: 22px; animation: aiFade .18s ease-out }
+@keyframes aiFade { from { opacity: 0; transform: translateY(5px) } to { opacity: 1; transform: translateY(0) } }
+@media (max-width: 1200px) { .ai-page { padding: 20px } }
+@media (max-width: 1050px) { .ai-page { gap: 14px; padding: 14px } }
+@media (prefers-reduced-motion: reduce) { .ai-page { animation: none } }
+
+/* Fiszki 1.5 — compact contextual creation, AI attribution */
+
+/* 1.5.1 — A clear, actionable message when ChatGPT plan sharing is exhausted */
+
+/* Fiszki 1.6 — contextual search, docked assistant and review feedback */
+
+.study-progress-segments { display: flex; gap: 0; border-radius: 20px; height: 9px }
+.progress-segment { height: 100%; flex-shrink: 0; transition: width .25s ease; min-width: 0 }
+.progress-correct { background: var(--green) }
+.progress-wrong { background: var(--red) }
+.study-progress-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 11px }
+.study-progress-legend span { color: var(--muted); display: inline-flex; align-items: center; gap: 6px; font-size: 11px }
+.study-progress-legend strong { color: var(--text); font-weight: 750; margin-left: 2px; font-variant-numeric: tabular-nums }
+.study-progress-legend i { display: inline-block; border-radius: 3px; width: 8px; height: 8px }
+.study-legend-correct i { background: var(--green) }
+.study-legend-wrong i { background: var(--red) }
+.study-legend-pending i { background: var(--surface-3); border: 1px solid var(--border) }
+@keyframes chat-dock-in { from { opacity: 0; transform: translateY(15px) scale(.97) } to { opacity: 1; transform: translateY(0) scale(1) } }
+
+
+/* Originally 30-themes.css; retained specialized styles only. */
+@media (max-width: 740px) {
+  .study-progress-legend { gap: 10px }
+}
+@media (prefers-reduced-motion: reduce) { .progress-segment { animation: none; transition: none } }
+
+/* Workspace layout, neutral motion and settings navigation */
+
+
+::selection { background: color-mix(in srgb, var(--accent-ink) 29%, transparent) }
+.tree-item.selected svg { color: var(--accent-ink) }
+.study-card-eyebrow, .study-progress-label strong { color: var(--accent-ink) }
+.study-card {
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease, opacity .15s ease, box-shadow .15s ease;
+}
+.study-card:hover {
+  transform: none;
+}
+.study-card:hover { border-color: color-mix(in srgb, var(--accent-ink) 55%, var(--border)) }
+.study-card { box-shadow: none; border-radius: 17px }
+.study-card.is-flipped { border-color: var(--accent-ink) }
+
+
+/* Unified surfaces, controls and improved search layout */
+
+
+
+body { letter-spacing: -.004em }
+
+/* Controls remain neutral; filled actions always have inverted label and icon contrast. */
+
+/* A soft, themed focus halo on editable surfaces instead of harsh native outlines. */
+button:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
+}
+
+/* Dashboard metrics are noninteractive information, visually detached from folder cards. */
+
+/* Command-search modal: breathing room at top and distinct result groups. */
+
+/* A semantic tooltip for the last edited card, with a safely truncated long title. */
+
+/* AI dock: the single close button returns the workspace to its previous state. */
+
+/* 1.9 — Battle.net-inspired blue-gray design system, without gradients or visual noise. */
+.tree-item.selected > svg { color: var(--accent-ink) }
+.study-card-eyebrow { color: var(--accent-ink) }
+.study-card:hover { border-color: color-mix(in srgb, var(--accent-ink) 48%, var(--border)) }
+
+/* v2: restrained interaction states, full-width focus rings, and coherent surfaces */
+.sidebar .tree-item.selected { box-shadow: none; border-color: color-mix(in srgb, var(--accent-ink) 55%, var(--border)); background: var(--accent-soft) }
+.sidebar .tree-item:hover:not(.selected) { border-color: var(--border) }
+
+
+/* Originally 40-interactions.css; retained specialized styles only. */
+.color-picker-hue { width: 100%; appearance: none; -webkit-appearance: none; margin: 14px 0; height: 12px; border-radius: 20px; background: linear-gradient(to right,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00); cursor: pointer }
+.color-picker-hue::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; height: 18px; width: 18px; background: #fff; border: 2px solid #445b75; border-radius: 50%; box-shadow: 0 2px 5px #0004 }
+.study-container { perspective: 1500px }
+.study-card { display: block; padding: 0; min-height: 0; background: transparent; border: 0; box-shadow: none; perspective: 1600px; overflow: visible; transition: none; transform: none }
+.study-card:hover { border: 0; transform: none }
+.study-card-inner { min-height: min(48vh, 410px); display: grid; width: 100%; transform-style: preserve-3d; transition: transform .52s cubic-bezier(.2,.7,.2,1); }
+.study-card.is-flipped .study-card-inner { transform: rotateY(180deg) }
+.study-card-face { grid-area: 1 / 1; display: flex; flex-direction: column; text-align: left; min-width: 0; padding: 23px 31px 26px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; backface-visibility: hidden; -webkit-backface-visibility: hidden; box-shadow: 0 10px 30px #050d1b24 }
+.study-card-front { transform: rotateY(0deg) }
+.study-card-back { transform: rotateY(180deg); border-color: var(--accent-ink) }
+.study-card-face .study-card-content { flex: 1; overflow: auto; max-height: min(36vh, 300px); min-width: 0; }
+.study-card-face .rich-content { overflow-wrap: anywhere; text-align: left }
+.study-card-face .rich-content [style*='text-align: center'] { text-align: center }
+.study-card-face .rich-content [style*='text-align: right'] { text-align: right }
+@keyframes flashcard-exit-left { to { transform: translateX(-36%) rotate(-9deg); opacity: 0 } }
+@keyframes flashcard-exit-right { to { transform: translateX(36%) rotate(9deg); opacity: 0 } }
+@keyframes flashcard-enter { from { opacity: .4; transform: translateY(8px) scale(.986) } to { opacity: 1; transform: none } }
+@media (prefers-reduced-motion: reduce) {
+  .study-card-inner { transition: none }
+}
+
+/* The palette context menu must sit above its parent popover. */
+.context-menu-panel { z-index: 7300 }
+
+/* Fiszki 2.1 — focus-first learning, clean input controls and detachable assistant */
+.rich-editor-front .editor-toolbar { justify-content: center; gap: 7px; flex-wrap: wrap }
+.rich-editor-front .tiptap-prose { text-align: center; min-height: 95px }
+.study-card-front .study-card-content, .study-card-front .rich-content { text-align: center }
+.study-card-front .rich-content p:not([style*='text-align']) { text-align: center }
+.study-card-face .rich-content [style*='text-align: left'] { text-align: left }
+.study-card { touch-action: pan-y; user-select: none }
+.study-rating { flex-wrap: wrap; align-items: center }
+.rating-wrong { background: var(--red-soft); border: 1px solid color-mix(in srgb, var(--red) 48%, var(--border)); color: var(--red) }
+.rating-wrong:hover:not(:disabled) { background: color-mix(in srgb, var(--red) 20%, var(--surface)); color: var(--red); border-color: var(--red) }
+.rating-correct { background: var(--green-soft); border: 1px solid color-mix(in srgb, var(--green) 48%, var(--border)); color: var(--green) }
+.rating-correct:hover:not(:disabled) { background: color-mix(in srgb, var(--green) 19%, var(--surface)); color: var(--green); border-color: var(--green) }
+.rating-wrong svg, .rating-correct svg { color: inherit }
+textarea { resize: none }
+@keyframes palette-appear { from { opacity: 0; transform: translateY(-5px) } to { opacity: 1; transform: translateY(0) } }
+.ai-window-body { flex: 1; display: flex; flex-direction: column; min-height: 0; min-width: 0 }
+.ai-window-body .ai-page { flex: 1; height: 100%; min-width: 0; min-height: 0; padding: 0; gap: 0; animation: none }
+.ai-window-body .page-eyebrow { display: none }
+@media (prefers-reduced-motion: reduce) { .study-card { animation: none !important; transition: none !important } }
+
+.study-card { position: relative }
+
+/* Fiszki 2.2 — cleaner edit flow, drag continuity and a compact native AI window */
+.study-page, .study-container { overflow-x: clip }
+.study-card-face { background: color-mix(in srgb, var(--drag-color, var(--surface)) var(--drag-weight, 0%), var(--surface)); border-color: color-mix(in srgb, var(--drag-border, var(--border)) var(--drag-weight, 0%), var(--border)); transition: background-color .13s ease, border-color .13s ease }
+@keyframes flashcard-exit-left-continuous {
+  from { transform: translateX(var(--drag-start, 0px)) rotate(var(--drag-angle, 0deg)); opacity: 1 }
+  to { transform: translateX(-90%) rotate(-14deg); opacity: 0 }
+}
+@keyframes flashcard-exit-right-continuous {
+  from { transform: translateX(var(--drag-start, 0px)) rotate(var(--drag-angle, 0deg)); opacity: 1 }
+  to { transform: translateX(90%) rotate(14deg); opacity: 0 }
+}
+
+/* Fiszki 2.3 — calm, uncluttered study UI and editing controls */
+/* Single, compact dashboard strip. No vertical separators that resemble tiles. */
+
+/* Content may fill the empty folder view down to the application bottom. */
+.library-overview-page { min-height: 100%; width: 100%; flex: 1 0 auto }
+
+/* Minimal editor: grow with content instead of reserving hundreds of blank pixels. */
+
+/* Study card remains in the layout for keyboard focus, its ghost flies across the viewport. */
+.study-page, .study-container { overflow-x: clip }
+.study-card.is-flight-source { opacity: 0; pointer-events: auto }
+.study-card.study-flight-ghost {
+  position: fixed !important;
+  z-index: 6500;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: visible;
+  pointer-events: none;
+  animation: none !important;
+  will-change: transform, opacity;
+  cursor: grabbing;
+}
+.study-card.study-flight-ghost .study-card-inner { height: 100%; min-height: 0 }
+.study-card.study-flight-ghost .study-card-face { overflow: hidden }
+.study-card:not(.study-flight-ghost) { touch-action: pan-y }
+.study-card-face .study-card-content { max-height: none }
+.study-card-face .study-card-content .rich-content { max-height: min(40vh, 330px); overflow: auto }
+.study-card-face .study-card-content { min-height: 0 }
+.study-card-face { padding-bottom: 22px }
+.study-card-face .study-card-eyebrow { flex: 0 0 auto }
+.study-keyboard-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 19px;
+  margin-top: 17px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.study-keyboard-hint > span { display: inline-flex; align-items: center; gap: 7px; margin: 0 }
+.study-keyboard-hint kbd { font-size: 11px; font-family: inherit; background: var(--surface-2); color: var(--text); min-height: 22px; min-width: 25px }
+.study-rating { gap: 10px }
+.study-rating .rating-wrong { background: var(--red-soft); color: var(--red); border: 1px solid color-mix(in srgb, var(--red) 46%, var(--border)) }
+.study-rating .rating-wrong:hover:not(:disabled), .study-rating .rating-wrong:active:not(:disabled) {
+  color: var(--red); border-color: var(--red); background: color-mix(in srgb, var(--red) 23%, var(--surface));
+}
+.study-rating .rating-correct { background: var(--green-soft); color: var(--green); border: 1px solid color-mix(in srgb, var(--green) 46%, var(--border)) }
+.study-rating .rating-correct:hover:not(:disabled), .study-rating .rating-correct:active:not(:disabled) {
+  color: var(--green); border-color: var(--green); background: color-mix(in srgb, var(--green) 23%, var(--surface));
+}
+
+@media (max-width: 730px) {
+  .study-container { padding: 0 14px 45px }
+  .study-card-face { padding: 17px 19px }
+}
+@media (prefers-reduced-motion: reduce) {
+  .study-flight-ghost { transition: none !important; animation: none !important }
+}
+/* Portal-mounted cards may travel outside #root; the page itself must not scroll horizontally. */
+html:has(.study-page), body:has(.study-page) { overflow-x: clip }
+
+
+/* Search highlights use a consistent color without changing font weight. */
+.search-match {
+  background: var(--search-match-bg);
+  color: var(--search-match-ink);
+  border-radius: 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 .08em;
+}
+
+
+/* Fiszki 2.5 — semantic hover and active surfaces live in the theme tokens above. */
+/* Exactly the same borderless treatment as other menu options, but red. */
+/* Every variant has visible interaction feedback in both themes. */
+/* Danger controls may never inherit primary color on hover/press. */
+
+/* Shared modal shell: independent header/body/footer. Only body scrolls. */
+
+
+/* Originally 50-refinements.css; retained specialized styles only. */
+/* Small devices keep fixed headers/footers with only content scrolling. */
+
+/* Folder headers and tiles use the same type label hierarchy as sets. */
+/* Composer has a scrollable body; the panel itself must never scroll behind the footer. */
+
+/* Keep selected tree and active assistant visually identifiable during pointer interactions. */
+.tree-item.selected:hover { background: color-mix(in srgb, var(--accent-soft) 75%, var(--interactive-hover-bg)); color: var(--accent-ink); }
+.tree-item.selected:active { background: color-mix(in srgb, var(--accent-soft) 55%, var(--interactive-active-bg)); color: var(--accent-ink); }
+
+/* Fiszki 2.6 — low-contrast interactions, no cross-over between semantic roles. */
+/* A neutral element stays neutral, including its border and label. */
+/* Navigation: only explicitly selected items receive the blue selected treatment. */
+.tree-item:not(.selected):hover {
+  background: var(--interactive-hover-bg);
+  border-color: transparent;
+}
+.tree-item:not(.selected):active {
+  background: var(--interactive-active-bg);
+  border-color: transparent;
+}
+/* Primary changes brightness, never acquires a new border. */
+/* Danger retains its original border on every interaction. */
+/* Selected choices retain their role but still react to hover/press. */
+
+/* All library cards use a single uninterrupted grid without extra headings. */
+
+/* Tinted surfaces have matching semantic strokes; neutral surfaces stay neutral. */
+.delete-warning, .form-error {
+  border: 1px solid color-mix(in srgb, var(--red) 33%, var(--border));
+  background: var(--red-soft);
+}
+.save-alert { border-color: color-mix(in srgb, var(--red) 43%, var(--border)); }
+.rating-wrong, .study-rating .rating-wrong { border-color: color-mix(in srgb, var(--red) 38%, var(--border)); }
+.rating-correct, .study-rating .rating-correct { border-color: color-mix(in srgb, var(--green) 38%, var(--border)); }
+
+/* Native scrollbar thumbs inherit theme and remain clearly draggable. */
+::-webkit-scrollbar-thumb { cursor: pointer; background-color: var(--scroll); transition: background-color .15s ease; }
+::-webkit-scrollbar-thumb:hover { background-color: var(--scroll-hover); }
+::-webkit-scrollbar-thumb:active { background-color: var(--scroll-active); }
+
+/* Toast with one animation clock and pause-on-hover (handled by Toast.tsx). */
+@keyframes toast-drain { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+/* Persistent selection colors are not replaced by neutral hover states. */
+.study-rating .rating-wrong:not(:disabled):hover { background: color-mix(in srgb, var(--red) 12%, var(--red-soft)); border-color: color-mix(in srgb, var(--red) 38%, var(--border)); }
+.study-rating .rating-wrong:not(:disabled):active { background: color-mix(in srgb, var(--red) 19%, var(--red-soft)); border-color: color-mix(in srgb, var(--red) 38%, var(--border)); }
+.study-rating .rating-correct:not(:disabled):hover { background: color-mix(in srgb, var(--green) 12%, var(--green-soft)); border-color: color-mix(in srgb, var(--green) 38%, var(--border)); }
+.study-rating .rating-correct:not(:disabled):active { background: color-mix(in srgb, var(--green) 19%, var(--green-soft)); border-color: color-mix(in srgb, var(--green) 38%, var(--border)); }
+
+
+/* Fiszki 2.7 — unified interactive tokens. Intensity changes, semantic tone doesn't. */
+/* Plain menu rows are neutral on hover AND active, in both themes. */
+/* Initial ChatGPT connection / model discovery takes over only the assistant content. */
+
+/* Default menu items share the same transparent rest state and tiny separation. */
+
+/* Center the two library totals inside their own full-width section. */
+@media (max-width: 700px) { }
+
+/* Non-rich chat composer: text is editable, attachments are separate removable items. */
+.ai-composer-editable p { margin: 0 0 4px; }
+.ai-composer-editable p:last-child { margin-bottom: 0; }
+.ai-composer-editable p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: var(--faint); pointer-events: none; float: left; height: 0; }
+.ai-markdown { white-space: normal; }
+.ai-markdown :is(p, ul, ol, pre, h3) { margin: 0 0 8px; }
+.ai-markdown > :last-child { margin-bottom: 0; }
+.ai-markdown ul { padding-left: 18px; list-style: disc; }
+.ai-markdown ol { padding-left: 18px; list-style: decimal; }
+.ai-markdown li { margin-block: 3px; }
+.ai-md-heading { font-size: 1.12em; line-height: 1.35; font-weight: 740; color: var(--text); }
+.ai-markdown strong { font-weight: 750; color: var(--text); }
+.ai-markdown em { font-style: italic; }
+.ai-markdown code { background: var(--surface-3); padding: 1px 4px; border-radius: 4px; }
+.ai-markdown pre { padding: 10px; border-radius: 8px; background: var(--bg); overflow-x: auto; }
+.ai-markdown pre code { padding: 0; background: transparent; }
+.ai-markdown mark { color: var(--text); background: var(--accent-soft); border-radius: 3px; padding: 0 2px; }
+.ai-md-accent { color: var(--accent-ink); }
+.ai-md-table-scroll { max-width: 100%; overflow-x: auto; margin-bottom: 10px; }
+.ai-md-table-scroll table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.ai-md-table-scroll :is(td, th) { text-align: left; padding: 6px 8px; border: 1px solid var(--border); }
+.ai-md-table-scroll th { background: var(--surface-3); }
+
+/* Settings: one invariant box model for rest, hover, active and selected.
+   Do not transition radius, padding or borders: that previously caused jumps. */
+/* Center each list item as an independent marker-and-text unit. Previously the
+   longest line determined the marker column for *all* items in the list. Keep
+   native <li> markers (including ordered-list start values and nested lists). */
+.rich-content, .study-card-face .study-card-content .rich-content { text-align: center }
+:is(.rich-content, .tiptap-prose) > :is(ol, ul) {
+  width: max-content;
+  max-width: calc(100% - 2em);
+  margin: .65em auto;
+  padding-inline-start: 2em;
+  list-style-position: outside;
+  text-align: left;
+}
+:is(.rich-content, .tiptap-prose) :is(ol, ul) > li {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  text-align: left;
+}
+:is(.rich-content, .tiptap-prose) :is(ol, ul) > li > p {
+  text-align: left !important;
+  margin-block: .25em;
+}
+:is(.rich-content, .tiptap-prose) :is(ol, ul) :is(ol, ul) {
+  margin-block: .35em;
+  padding-inline-start: 1.8em;
+  text-align: left;
+}
+:is(.rich-content, .tiptap-prose) > :is(ol, ul):has(> li p[style*="text-align: left"]) {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+:is(.rich-content, .tiptap-prose) > :is(ol, ul):has(> li p[style*="text-align: right"]) {
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+}
+:is(.rich-content, .tiptap-prose) > :is(ol, ul):has(> li p[style*="text-align: center"]) {
+  margin-inline: auto;
+}
+:is(.rich-content, .tiptap-prose) :is(ol, ul) > li:has(> p[style*="text-align: left"]) {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+:is(.rich-content, .tiptap-prose) :is(ol, ul) > li:has(> p[style*="text-align: right"]) {
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+}
+:is(.rich-content, .tiptap-prose) :is(ol, ul) li > p[style*="text-align: right"] { text-align: right !important; }
+
+/* Toasts are owned by the provider: newest on top of a shallow 3D stack.
+   Expanding on hover exposes up to three independently timed notifications. */
+
+/* Nested modals keep the previous dialog visible but inaccessible underneath. */
+
+
+/* 2.12 · Compact card-stack notifications: the stack and individual cards share
+   one height, so expansion never leaves empty space or clips the last item. */
+
+/* A disabled icon cannot accidentally inherit hover from legacy .icon-button
+   rules while new controls use Tailwind's enabled:hover / enabled:active. */
+
+/* The standalone Electron study window uses exactly the same deck styling,
+   without the library sidebar or global search chrome. */
+.study-window .study-page { min-height: 100%; }
+.study-window .study-container { width: 100%; max-width: 850px; padding-inline: clamp(16px, 5vw, 52px); }

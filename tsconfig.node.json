@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "lib": ["ES2022"], "module": "ESNext", "moduleResolution": "Bundler",
+    "esModuleInterop": true, "skipLibCheck": true, "strict": true, "types": ["node"],
+    "noEmit": true, "allowImportingTsExtensions": true
+  },
+  "include": ["electron/**/*.ts", "electron.vite.config.ts", "src/types/model.ts", "src/lib/seed.ts", "src/lib/tree.ts"]
+}

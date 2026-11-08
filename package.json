@@ -1,0 +1,125 @@
+{
+  "name": "fiszki",
+  "private": true,
+  "version": "1.0.6",
+  "description": "Fiszki – lokalna aplikacja do nauki z opcjonalnym asystentem AI",
+  "main": "./out/main/index.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "fix:electron": "node scripts/ensure-electron.cjs",
+    "predev": "node scripts/ensure-electron.cjs",
+    "dev": "electron-vite dev",
+    "prestart": "node scripts/ensure-electron.cjs",
+    "start": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.web.json && tsc --noEmit -p tsconfig.node.json",
+    "build": "npm run typecheck && electron-vite build",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win nsis --x64 --publish never",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:linux": "npm run build && electron-builder --linux",
+    "test": "node --require ./tests/helpers/register-ts.cjs --test tests/*.test.cjs",
+    "check:structure": "node scripts/check-structure.cjs",
+    "publish:win": "npm run build && electron-builder --win nsis --x64 --publish always"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.27.5",
+    "@tiptap/extension-color": "^2.26.0",
+    "@tiptap/extension-highlight": "^2.26.0",
+    "@tiptap/extension-image": "^2.26.0",
+    "@tiptap/extension-link": "^2.26.0",
+    "@tiptap/extension-placeholder": "^2.26.0",
+    "@tiptap/extension-table": "^2.26.0",
+    "@tiptap/extension-table-cell": "^2.26.0",
+    "@tiptap/extension-table-header": "^2.26.0",
+    "@tiptap/extension-table-row": "^2.26.0",
+    "@tiptap/extension-text-align": "^2.26.0",
+    "@tiptap/extension-text-style": "^2.26.0",
+    "@tiptap/extension-underline": "^2.26.0",
+    "@tiptap/pm": "^2.26.0",
+    "@tiptap/react": "^2.26.0",
+    "@tiptap/starter-kit": "^2.26.0",
+    "clsx": "^2.1.1",
+    "dompurify": "^3.2.6",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^3.24.2",
+    "@tiptap/core": "^2.26.0",
+    "tailwind-variants": "^3.3.1",
+    "electron-updater": "^6.8.12"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.4.1",
+    "autoprefixer": "^10.4.21",
+    "electron": "^36.0.0",
+    "electron-builder": "^26.0.12",
+    "electron-vite": "^3.1.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3",
+    "vite": "^6.2.6"
+  },
+  "build": {
+    "appId": "studio.fiszki.desktop",
+    "productName": "Fiszki",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "resources/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.education"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Education"
+    },
+    "extraResources": [
+      {
+        "from": "resources/icon.png",
+        "to": "icon.png"
+      },
+      {
+        "from": "resources/icon.ico",
+        "to": "icon.ico"
+      }
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "damiandro40",
+      "repo": "Fiszki",
+      "releaseType": "release"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damiandro40/Fiszki.git"
+  }
+}

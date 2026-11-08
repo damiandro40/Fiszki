@@ -1,0 +1,37 @@
+name: Fiszki - wydanie Windows
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # Until package-lock.json is committed, use npm install rather than npm ci.
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Validate release version
+        shell: pwsh
+        run: |
+          $version = node -p "require('./package.json').version"
+          if ("v$version" -ne "${{ github.ref_name }}") { throw "Tag must equal v$version" }
+      - name: Check types and run tests
+        run: |
+          npm run typecheck
+          npm run check:structure
+          npm test
+      - name: Build renderer and Electron
+        run: npm run build
+      - name: Publish Windows NSIS installer + latest.yml
+        run: npx electron-builder --win nsis --x64 --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

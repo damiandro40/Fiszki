@@ -1,0 +1,65 @@
+const { test } = require('node:test')
+const assert = require('node:assert/strict')
+const fs = require('node:fs')
+const path = require('node:path')
+const root = path.resolve(__dirname, '..')
+const read = file => fs.readFileSync(path.join(root, file), 'utf8')
+
+test('1.0.5: drafts use one compact hover/focus popover without faux deck layers', () => {
+  const source = read('src/features/library/DraftStack.tsx')
+  assert.match(source, /id="draft-popover"/)
+  assert.match(source, /group-hover:pointer-events-auto/)
+  assert.match(source, /group-focus-within:pointer-events-auto/)
+  assert.match(source, /deckNames\.get\(draft\.deckId\)/)
+  assert.match(source, /onResume\(draft\.draftId\)/)
+  assert.doesNotMatch(source, /Layers3|inset-x-3 -top|Edycja/)
+})
+
+test('1.0.4: folder count icons have primary color and no chip backgrounds', () => {
+  const overview = read('src/views/library/LibraryOverview.tsx')
+  const metrics = overview.match(/aria-label=\{`\$\{folders\.length\} folderów`\}[\s\S]*?\{decks\.length\}<\/strong><\/span>/)
+  assert.ok(metrics, 'Folder and deck metrics should be grouped in the header')
+  assert.equal((metrics[0].match(/strokeWidth=\{2\.5\} className="shrink-0 text-\[var\(--accent-ink\)\]"/g) || []).length, 2)
+  assert.doesNotMatch(metrics[0], /bg-\[var\(--surface-2\)\]|rounded-md/)
+})
+
+test('1.0.5: toast is a compact neutral notification retaining undo and timers', () => {
+  const toast = read('src/components/Toast.tsx')
+  const provider = read('src/providers/ToastProvider.tsx')
+  assert.match(toast, /min-h-\[58px\]/)
+  assert.match(toast, /bg-\[var\(--surface\)\]/)
+  assert.doesNotMatch(toast, /bg-\[var\(--green-soft\)\]|bg-\[var\(--red-soft\)\]/)
+  assert.match(toast, /remaining\.current = Math\.max\(0/)
+  assert.match(toast, /onUndo && <Button/)
+  assert.match(provider, /index \* 72/)
+  assert.match(provider, /className="toast-reveal"/)
+  assert.match(provider, /pausedExternally=\{isExpanded \|\| exiting\}/)
+})
+
+test('1.0.4: Escape cannot cancel key capture; click toggles the active capture', () => {
+  const settings = read('src/features/library/SettingsDialog.tsx')
+  assert.match(settings, /if \(event\.key === 'Escape'\) return/)
+  assert.match(settings, /event\.preventDefault\(\)/)
+  assert.match(settings, /event\.stopPropagation\(\)/)
+  assert.match(settings, /setCapturing\(capturing === item\.action \? null : item\.action\)/)
+  assert.match(settings, /Kliknij, aby anulować/)
+  assert.doesNotMatch(settings, /Esc \/ kliknij/)
+})
+
+test('1.0.4: disconnect requires a confirmation modal and an explicit destructive action', () => {
+  const settings = read('src/features/library/SettingsDialog.tsx')
+  assert.match(settings, /intent="ghost" color="neutral" icon=\{<LogOut/)
+  assert.match(settings, /onClick=\{\(\) => setConfirmDisconnect\(true\)\}>Rozłącz/)
+  assert.match(settings, /\{confirmDisconnect && <Modal title="Rozłączyć ChatGPT\?"/)
+  assert.match(settings, /intent="solid" color="danger"/)
+  assert.match(settings, /onClick=\{\(\) => void disconnectChatGPT\(\)\}/)
+  assert.match(settings, /disabled=\{disconnecting\} data-initial-focus onClick=\{\(\) => setConfirmDisconnect\(false\)\}/)
+  assert.match(settings, /await window\.flashcards\.aiDisconnect\(\)/)
+  assert.match(require('../package.json').version, /^1\.0\.\d+$/)
+})
+
+test('1.0.4: closing an editor resets the active draft id without a missing handler', () => {
+  const dialogs = read('src/app/AppDialogs.tsx')
+  assert.match(dialogs, /activeDraftId, setActiveDraftId, resumeDraft/)
+  assert.match(dialogs, /setActiveDraftId\(null\)/)
+})
